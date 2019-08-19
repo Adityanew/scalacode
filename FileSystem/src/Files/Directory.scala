@@ -3,7 +3,7 @@ import scalaoops.FIleSystem._
 class Directory(override val parentPath:String, override val name:String, val contents:List[Direntry]) extends Direntry( parentPath:String,  name:String){
   
   def hasEntry(name:String):Boolean= findEntry(name)!= null 
-  
+
   def asFile = throw new FilesystemException("A directory cannot be converted to a file")
   
   def getAllFoldersInPath:List[String] = path.substring(1).split(Directory.SEPARATOR).toList.filter(x => ! x.isEmpty())
@@ -58,3 +58,4 @@ object Directory{
     new Directory(parentPath,name,List()) 
   }
 }
+

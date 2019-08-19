@@ -22,7 +22,8 @@ abstract class CreateEntry(val name: String) extends Command {
      name.contains(".")
      
    def doCreateEntry(state:State,name:String):State=
-   { def updateStructure(currentDirectory: Directory, path: List[String], newEntry: Direntry): Directory = {
+   {
+     def updateStructure(currentDirectory: Directory, path: List[String], newEntry: Direntry): Directory = {
      if (path.isEmpty) currentDirectory.addEntry(newEntry)
      else{
        val oldEntry = currentDirectory.findEntry(path.head).asDirectory

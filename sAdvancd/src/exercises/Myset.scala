@@ -1,3 +1,4 @@
+/*
 package exercises
 
 trait Myset[A] extends (A => Boolean) {
@@ -73,10 +74,12 @@ class PropertyBasedSet[A](property: A => Boolean) extends Myset[A] {
     else new Cons[A](elem, this)
 
   override def contains(elem: A): Boolean = {if (elem == head) true
-  if (this.tail.isEmpty) false
+  else if (this.tail.isEmpty) false
     else
     tail.contains(elem)
   }
+
+
 
   override def filter(predicate: A => Boolean): Myset[A] = {
     val filteredTail = tail filter predicate
@@ -86,7 +89,8 @@ class PropertyBasedSet[A](property: A => Boolean) extends Myset[A] {
   }
   override def flatMap[B](f: A => Myset[B]): Myset[B] =(tail flatMap f) ++ f(head)
 
-  override def foreach(f : A => Unit): Unit = {f(head)
+  override def foreach(f : A => Unit): Unit = {
+    f(head)
   tail.foreach(f)}
 
   override def map[B](f: A => B): Myset[B] = (tail map f) + f(head)
@@ -106,3 +110,6 @@ object Myset {
     buildSet(values.toSeq, new Empty[A])
   }
 }
+
+
+*/

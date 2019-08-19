@@ -1,5 +1,6 @@
 package exercises
 
+/*
 
 
 
@@ -14,13 +15,16 @@ package exercises
   def flatMap[B](transformer:(A) => MyList[B]):MyList[B]
   def ++[B>:A](list:MyList[B]):MyList[B]
   def filter(predicate: (A) => Boolean): MyList[A]
+   def foreach(func: A => Unit): Unit
+   def sort(f : (A,A) => Int): MyList[A]
+   def zipWith
   
 }
 case object Empty  extends MyList[Nothing]{
   def head:Nothing= throw new NoSuchElementException
   def tail:MyList[Nothing]=throw new NoSuchElementException
   def isEmpty:Boolean=true
-  def  add[B>:Nothing](element:B):MyList[B]=Cons(element,Empty)
+  def  add[B>:Nothing](element:B):MyList[B]= Cons(element, Empty)
   def printElements:String=""
   def map[B](transformer: Nothing => B):MyList[B]=Empty
   def flatMap[B](transformer: Nothing => MyList[B]):MyList[B]=Empty
@@ -32,7 +36,7 @@ case class Cons[+A](h:A,t:MyList[A]) extends MyList[A]{
     def head:A=h
     def tail:MyList[A]=t
     def isEmpty:Boolean=false
-    def map[B](transformer: A => B):MyList[B]={
+    def map[B](transformer: A => B): MyList[B] = {
       
          Cons(transformer(h),t.map(transformer))  
       
@@ -42,11 +46,12 @@ case class Cons[+A](h:A,t:MyList[A]) extends MyList[A]{
       transformer(h) ++ t.flatMap(transformer)
     }
     def ++[B>:A](list:MyList[B]):MyList[B]= Cons(h,t ++ list)
-    def filter(predicate:A => Boolean):MyList[A]={
+    def filter[A] (predicate:A => Boolean):MyList[A]={
       if(predicate(h))  Cons(h,t.filter(predicate))
       else t.filter(predicate)
     }
     
+*/
     /*def filter[B>:A](x:B =>Boolean):MyList[B]={
      val newList:MyList[B]=Empty
      def filterHelper(newList:MyList[B]):MyList[B]={
@@ -71,14 +76,14 @@ case class Cons[+A](h:A,t:MyList[A]) extends MyList[A]{
       mapHelper(newList)
     }
     def flatMap(*/
-    def add[B>:A](element:B):MyList[B]= Cons(element,this)
+  /*  def add[B>:A](element:B): MyList[B] = Cons(element,this)
     def printElements:String={
       if( t.isEmpty) " "+h
       else
         h+" "+t.printElements
     }
 }
-
+*/
   
 
 
@@ -99,6 +104,7 @@ class StringToIntTransform extends Transformer[String,Int]
 {
   def transform(v:String):Int=v.toInt
 }*/
+/*
 object ListTest extends App{
   
 
@@ -112,4 +118,4 @@ object ListTest extends App{
   val newList=list.add(4)
   println(list.add(4).tail)
   println(newList.tail)
-}
+}*/
